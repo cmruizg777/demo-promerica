@@ -15,7 +15,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
-
+import {MatChipsModule} from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 //export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -37,7 +38,9 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

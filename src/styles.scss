@@ -41,3 +41,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+.mat-autocomplete-panel{
+  background: #FFFFFF;
+  /* Menu Shadow */
+
+  box-shadow: 0px 8px 28px rgba(120, 177, 181, 0.06);
+  border-radius: 10px;
+}
+.mat-option{
+  background: #FFFFFF;
+
+  color: #185A7D !important;
+  font-size: 1rem !important;
+  height: 2.5rem !important;
+  border-bottom: 0.5px solid #9BB8D3;
+}
+.mat-option:hover{
+  background: #E7EFF5 !important;
+}
