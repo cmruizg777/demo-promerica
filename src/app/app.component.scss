@@ -1,0 +1,23 @@
+.container{
+  //background: #E5E5E5;
+  box-sizing: border-box;
+  .header{
+    height: 75px;
+    box-shadow: 0 0 28px 0 #78B1B5;
+    background: #ffffff;
+    img{
+      position: relative;
+      height: 51px;
+      width: 138px;
+      left: 41px;
+      top: 12px;
+      border-radius: 0px;
+    }
+  }
+  .content{
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+

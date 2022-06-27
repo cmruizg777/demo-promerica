@@ -1,0 +1,73 @@
+<div class="brand">
+  <div class="title">
+    <span>
+      <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+    </span>
+    <span>¡Hola! Configuremos tu perfil</span>
+  </div>
+</div>
+<div class="form-left">
+  <div class="green-rectangle">
+      <div class="text-container">
+        <p class="text-light" >Imágen Perfil</p>
+      </div>
+      <div class="img-container">
+        <img src="" alt=""  *ngIf="imageIsUploaded(); else defaultImage">
+
+        <ng-template #defaultImage>
+          <div class="icon">
+            <i class="far fa-user"></i>
+          </div>
+
+        </ng-template>
+      </div>
+      <div class="uploader">
+        <input type="file" class="input-file" #file>
+        <button class="img-button" (click)="file.click()">
+          <div class="text">
+            <span class="text">Adjunta una foto</span>
+          </div>
+          <div class="icon">
+            <i class="fa fa-upload"></i>
+          </div>
+        </button>
+      </div>
+  </div>
+</div>
+<div class="form-right">
+  <div class="title">
+    <h1>Tu información</h1>
+  </div>
+  <div class="subtitle">
+    <p>Completa la siguiente información para completar tu perfil</p>
+  </div>
+  <div class="form-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre*</mat-label>
+      <input matInput placeholder="Nombre">
+    </mat-form-field>
+  </div>
+  <div class="form-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Pasatiempo Favorito</mat-label>
+      <input matInput placeholder="Pasatiempo Favorito">
+    </mat-form-field>
+  </div>
+  <div class="form-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Cumpleaños*</mat-label>
+      <input (focus)="picker.open()" matInput [matDatepicker]="picker" placeholder="Cumpleaños*">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="form-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Documento*</mat-label>
+      <input mask="(00000000-0)" matInput placeholder="Documento*">
+    </mat-form-field>
+  </div>
+  <div class="button-container">
+    <button mat-raised-button color="primary" [disabled]="false">Continuar</button>
+  </div>
+</div>
