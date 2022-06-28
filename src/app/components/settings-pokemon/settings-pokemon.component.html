@@ -13,6 +13,7 @@
       <img *ngIf="item.url_image" [src]="item.url_image" alt="">
     </div>
     <div class="pokemon-label" >
+      <span>#{{item.id | pokemonId}}&ensp;</span>
       <span>{{item.name | titlecase}}</span>
     </div>
   </div>
