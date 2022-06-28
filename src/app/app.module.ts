@@ -26,6 +26,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { PokemonIdPipe } from './pipes/pokemon-id.pipe';
+import { TypeColorPipe } from './pipes/type-color.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PokemonIdPipe } from './pipes/pokemon-id.pipe';
     PokemonItemDirective,
     PokemonTypePipe,
     LoadingComponent,
-    PokemonIdPipe
+    PokemonIdPipe,
+    TypeColorPipe
   ],
   imports: [
     BrowserModule,

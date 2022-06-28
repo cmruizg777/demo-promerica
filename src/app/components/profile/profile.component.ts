@@ -4,6 +4,7 @@ import { AppMessages } from './../../models/app-messages';
 import { Profile } from './../../models/profile';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-profile',
@@ -21,9 +22,11 @@ export class ProfileComponent implements OnInit {
     component: 'profile'
   }
   abilities = abilities;
+  //color: ThemePalette = "success";
   constructor(private profileService: ProfileService, private appData: DataService) { }
 
   ngOnInit(): void {
+
     setTimeout(()=>{
       this.appData.setAppMessages(this.messages);
       let data = this.profileService.getProfile();

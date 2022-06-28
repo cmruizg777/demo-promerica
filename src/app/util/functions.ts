@@ -11,3 +11,6 @@ export function getAge(birthDate: any): number{
 export function translateType(type: string){
   return pokemonTypes.find( t => t.name == type)?.es;
 }
+export function getColorType(type: string){
+  return pokemonTypes.find( t => t.name == type)?.color;
+}

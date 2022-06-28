@@ -1,14 +1,14 @@
 <div class="pokemon-list" *ngIf="profile">
-  <div class="pokemon-item" *ngFor="let item of profile.pokemons">
+  <div class="pokemon-item" *ngFor="let p of profile.pokemons">
     <div class="pokemon-info">
       <div class="pokemon-picture">
-        <img [src]="item.url_image2" alt="">
+        <img [src]="p.url_image2 ? p.url_image2: p.url_image" alt="">
       </div>
       <div class="pokemon-name">
-        <h1>{{item.name | titlecase}}</h1>
+        <h1>{{p.name | titlecase}}</h1>
       </div>
       <div class="pokemon-type">
-        <span *ngFor="let type of item.types">{{(type | pokemonType) | titlecase}}</span>
+        <span *ngFor="let type of p.types">{{(type | pokemonType) | titlecase}}</span>
       </div>
     </div>
     <div class="pokemon-abilities">
@@ -17,7 +17,7 @@
           {{item.name}}
         </div>
         <div class="ability-level">
-          <mat-progress-bar mode="determinate" [value]="item.level" color="green"></mat-progress-bar>
+          <mat-progress-bar mode="determinate" [value]="item.level" color="{{p.types[0]|typeColor}}"></mat-progress-bar>
         </div>
       </div>
     </div>
