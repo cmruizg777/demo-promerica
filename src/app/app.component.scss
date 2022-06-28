@@ -16,6 +16,195 @@
     box-sizing: border-box;
     padding-left: 5%;
     padding-right: 5%;
+
+
+    .form-left{
+      margin-top: 3%;
+      width: 55%;
+      height: 85vh;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      .brand{
+        display: inline-block;
+        width: 50%;
+        margin-left: -20% !important;
+        margin-bottom: 5%;
+        .title{
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: bolder;
+          font-size: 1.5rem;
+          color: #185A7D;
+          margin-top: 2%;
+          width: 120%;
+        }
+        .title-profile{
+          font-style: normal;
+          font-weight: bolder;
+          font-size: 1.5rem;
+          color: #000;
+          margin-top: 2%;
+        }
+        .subtitle{
+          color: #868686;
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+        button{
+          float: right;
+        }
+        button, button *{
+          font-size: 0.8rem;
+        }
+      }
+      .green-rectangle{
+        width: 50%;
+        height: 70%;
+        background: #00693C;
+        border-radius: 50px;
+        text-align: center;
+        margin: auto;
+        .text-container{
+          box-sizing: border-box;
+          padding-top: 50px;
+          color: #FFFFFF;
+          font-family: 'Poppins';
+          font-size: 1.5rem;
+        }
+        .img-container{
+          margin: auto;
+          text-align: center;
+          box-sizing: border-box;
+          width: 12vw;
+          height: 12vw;
+          /* Primary/Azul/Azul 40 */
+
+          background: #E7EFF5;
+          /* Neutro / Blanco 00 */
+
+          border: 14px solid #FFFFFF;
+          border-radius: 50%;
+          vertical-align: middle;
+          z-index: 1;
+          img{
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            border-radius: 50%;
+          }
+          .icon{
+            display: table;
+            height: 100%;
+            margin: auto;
+            i{
+              display: table-cell;
+              vertical-align: middle;
+              color: #9BB8D3;
+              margin-top: 5%;
+              font-size: 50px;
+            }
+          }
+
+        }
+        .input-file{
+          display: none;
+        }
+        .img-button{
+          font-family: 'Poppins';
+          /* input plate */
+          box-sizing: border-box;
+          margin-top: 10%;
+          width: 80%;
+          height: 50px;
+          /* Neutro / Blanco 00 */
+
+          background: #FFFFFF;
+          /* Primary/Azul/Azul 40 */
+
+          border: 1px dashed #9BB8D3;
+          border-radius: 10px;
+
+          /* Inside auto layout */
+          flex: none;
+          order: 0;
+          flex-grow: 0;
+          color: #2C85BC;
+          .text{
+            font-weight: bold;
+            display: inline-block;
+            text-align: start;
+            min-width: 80%;
+            box-sizing: border-box;
+            padding-left: 10px;
+          }
+          .icon{
+
+            display: inline-block;
+            text-align: end;
+            min-width: 20%;
+            box-sizing: border-box;
+            padding-right: 10px;
+          }
+        }
+        .profile-info{
+          width: 100%;
+          font-size: 0.9rem;
+          color: #FFFFFF;
+          text-align: left;
+
+          display: block;
+          box-sizing: border-box;
+
+          .profile-info-item{
+            width: 80%;
+            margin-top: 10%;
+            margin-left: 10%;
+            display: block;
+            .label{
+              float: left;
+              font-weight: 500;
+              width: 50%;
+            }
+            .value{
+              float: right;
+              font-weight: 200;
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+    .form-right{
+      display: inline-block;
+      width: 40%;
+      vertical-align: top;
+      margin-top: 2%;
+      .title{
+        display: block;
+        font-family: 'Poppins';
+        font-size: 1.2rem;
+        font-weight: 400;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #01426A;
+        h1{
+          display: inline;
+        }
+        button{
+          float: right;
+        }
+        button, button *{
+          font-size: 0.8rem;
+        }
+      }
+      .subtitle{
+        color: #868686;
+      }
+
+    }
+
+
   }
 }
 

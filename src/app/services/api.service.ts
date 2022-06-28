@@ -31,7 +31,8 @@ export class ApiService {
         data.name,
         data.sprites.other.home.front_default
         )
-      console.log(pokemon)
+      pokemon.url_image2 = data.sprites.other.dream_world.front_default
+      pokemon.types = data.types.map((t: any) => t = t.type.name);
       return pokemon;
     }))
     .toPromise();

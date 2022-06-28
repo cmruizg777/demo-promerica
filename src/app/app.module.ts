@@ -1,3 +1,4 @@
+import { DataService } from './services/data.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,9 +18,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PokemonItemDirective } from './directives/pokemon-item.directive';
-//export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { PokemonTypePipe } from './pipes/pokemon-type.pipe';
+import { LoadingComponent } from './components/loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,9 @@ import { PokemonItemDirective } from './directives/pokemon-item.directive';
     SettingsInfoComponent,
     SettingsPokemonComponent,
     ProfileComponent,
-    PokemonItemDirective
+    PokemonItemDirective,
+    PokemonTypePipe,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +51,13 @@ import { PokemonItemDirective } from './directives/pokemon-item.directive';
     NgxMaskModule.forRoot(),
     MatChipsModule,
     MatAutocompleteModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

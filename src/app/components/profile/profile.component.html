@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="pokemon-list" *ngIf="profile">
+  <div class="pokemon-item" *ngFor="let item of profile.pokemons">
+    <div class="pokemon-info">
+      <div class="pokemon-picture">
+        <img [src]="item.url_image2" alt="">
+      </div>
+      <div class="pokemon-name">
+        <h1>{{item.name | titlecase}}</h1>
+      </div>
+      <div class="pokemon-type">
+        <span *ngFor="let type of item.types">{{(type | pokemonType) | titlecase}}</span>
+      </div>
+    </div>
+    <div class="pokemon-abilities">
+      <div class="ability" *ngFor="let item of abilities">
+        <div class="ability-name">
+          {{item.name}}
+        </div>
+        <div class="ability-level">
+          <mat-progress-bar mode="determinate" [value]="item.level" color="green"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

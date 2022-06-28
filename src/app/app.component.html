@@ -3,7 +3,81 @@
     <img src="./../assets/img/pokemon.png">
   </div>
   <div class="content">
-    <router-outlet></router-outlet>
+
+    <div class="form-left">
+      <div class="brand" *ngIf="messages">
+        <div [class]="messages.component == 'profile' ? 'title-profile':'title'">
+          <span *ngIf="messages.component != 'profile'">
+            <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+          </span>
+          <span>{{messages.brandTitle}}</span>
+          <button mat-stroked-button color="primary" *ngIf="messages.component == 'profile'" routerLink="/settings-info">
+            Editar
+          </button>
+        </div>
+        <div class="subtitle">
+          <span>{{messages.brandSubtitle}}</span>
+        </div>
+      </div>
+      <div class="green-rectangle">
+          <div class="text-container">
+            <p class="text-light" *ngIf="messages" >{{messages.imageTitle}}</p>
+          </div>
+          <div class="img-container">
+            <img src="" alt="" [src]="profilePicture"  *ngIf="profilePicture; else defaultImage">
+            <ng-template #defaultImage>
+              <div class="icon">
+                <i class="far fa-user"></i>
+              </div>
+            </ng-template>
+          </div>
+          <div class="uploader" *ngIf="messages && messages.component == 'info'">
+            <input type="file" class="input-file" (change)="setProfilePicture($event)" accept=".gif,.jpg,.jpeg,.png" #file>
+            <button class="img-button" (click)="file.click()">
+              <div class="text">
+                <span class="text">Adjunta una foto</span>
+              </div>
+              <div class="icon">
+                <i class="fa fa-upload"></i>
+              </div>
+            </button>
+          </div>
+          <div class="profile-info" *ngIf="messages && messages.component != 'info'">
+            <div class="profile-info-item">
+              <div class="label">Pasatiempo:</div>
+              <div class="value">{{profile.hobby}}</div>
+            </div>
+            <div class="profile-info-item">
+              <div class="label">Edad:</div>
+              <div class="value">{{getProfileAge(profile.birthday)}} años</div>
+            </div>
+            <div class="profile-info-item" *ngIf="getProfileAge(profile.birthday) >= 18">
+              <div class="label">DUI:</div>
+              <div class="value">{{profile.document}}</div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="form-right">
+      <div *ngIf="messages">
+        <div class="title">
+          <h1>{{messages.contentTitle}}</h1>
+          <button mat-stroked-button color="primary" *ngIf="messages.component == 'profile'" routerLink="/settings-pokemon">
+            Editar
+          </button>
+        </div>
+        <div class="subtitle">
+          <p>{{messages.contentSubtitle}}</p>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+
   </div>
 </div>
 
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

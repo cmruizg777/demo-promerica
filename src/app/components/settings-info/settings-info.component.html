@@ -1,100 +1,62 @@
-<div class="brand">
-  <div class="title">
-    <span>
-      <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
-    </span>
-    <span>¡Hola! Configuremos tu perfil</span>
-  </div>
-</div>
-<div class="form-left">
-  <div class="green-rectangle">
-      <div class="text-container">
-        <p class="text-light" >Imágen Perfil</p>
-      </div>
-      <div class="img-container">
-        <img src="" alt="" [src]="profile.image"  *ngIf="profile && profile.image; else defaultImage">
 
-        <ng-template #defaultImage>
-          <div class="icon">
-            <i class="far fa-user"></i>
-          </div>
-
-        </ng-template>
-      </div>
-      <div class="uploader">
-        <input type="file" class="input-file" (change)="setProfilePicture($event)" accept=".gif,.jpg,.jpeg,.png" #file>
-        <button class="img-button" (click)="file.click()">
-          <div class="text">
-            <span class="text">Adjunta una foto</span>
-          </div>
-          <div class="icon">
-            <i class="fa fa-upload"></i>
-          </div>
-        </button>
-      </div>
+<form [formGroup]="profileForm">
+  <div class="form-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre*</mat-label>
+      <input matInput placeholder="Nombre*" formControlName="name">
+    </mat-form-field>
   </div>
-</div>
-<div class="form-right">
-  <div class="title">
-    <h1>Tu información</h1>
-  </div>
-  <div class="subtitle">
-    <p>Completa la siguiente información para completar tu perfil</p>
-  </div>
-  <form [formGroup]="profileForm">
-    <div class="form-control">
-      <mat-form-field appearance="outline">
-        <mat-label>Nombre*</mat-label>
-        <input matInput placeholder="Nombre*" formControlName="name">
-      </mat-form-field>
-    </div>
-    <div class="form-control">
-      <mat-form-field>
-        <mat-label>Pasatiempo Favorito</mat-label>
-        <mat-chip-list #chipList aria-label="hobby selection">
-          <mat-chip
-            *ngIf="hobby"
-            (removed)="remove(hobby)">
-            {{hobby}}
-            <button matChipRemove>
-              <mat-icon>cancel</mat-icon>
-            </button>
-          </mat-chip>
-          <input
-            [placeholder]="profileForm.value.hobby ? '':'Pasatiempo Favorito'"
-            #hobbyInput
-            class="chip-input"
-            formControlName="hobby"
-            [matAutocomplete]="auto"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            (matChipInputTokenEnd)="add($event)">
-        </mat-chip-list>
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="autocomplete">
-          <mat-option *ngFor="let hobby of filteredHobbies | async" [value]="hobby">
-            {{hobby}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+  <div class="form-control">
+    <mat-form-field>
+      <mat-label>Pasatiempo Favorito</mat-label>
+      <mat-chip-list #chipList aria-label="hobby selection">
+        <mat-chip
+          *ngIf="hobby"
+          (removed)="remove(hobby)">
+          {{hobby}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input
+          [placeholder]="profileForm.value.hobby ? '':'Pasatiempo Favorito'"
+          #hobbyInput
+          class="chip-input"
+          formControlName="hobby"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="autocomplete">
+        <mat-option *ngFor="let hobby of filteredHobbies | async" [value]="hobby">
+          {{hobby}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-    </div>
-    <div class="form-control">
-      <mat-form-field appearance="outline">
-        <mat-label>Cumpleaños*</mat-label>
-        <input (focus)="picker.open()" matInput [matDatepicker]="picker" placeholder="Cumpleaños*" formControlName="birthday">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="form-control">
-      <mat-form-field appearance="outline">
-        <mat-label>Documento*</mat-label>
-        <input mask="(00000000-0)" matInput placeholder="Documento*" formControlName="document">
-      </mat-form-field>
-    </div>
-    <div class="button-container">
-      <button mat-raised-button color="primary" [disabled]="isValid()">Continuar</button>
-    </div>
-  </form>
-
-</div>
+  </div>
+  <div class="form-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Cumpleaños*</mat-label>
+      <input (focus)="picker.open()" (dateChange)="calcAge()"  matInput [matDatepicker]="picker" placeholder="Cumpleaños*" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="form-control" *ngIf="!isYounger">
+    <mat-form-field appearance="outline">
+      <mat-label>Documento*</mat-label>
+      <input mask="00000000-0" matInput placeholder="Documento*" formControlName="document">
+    </mat-form-field>
+  </div>
+  <div class="form-control" *ngIf="isYounger">
+    <mat-form-field appearance="outline">
+      <mat-label>Carnet de minoridad</mat-label>
+      <input mask="00000000-0" matInput placeholder="Carnet de minoridad*" formControlName="document">
+    </mat-form-field>
+  </div>
+  <div class="button-container">
+    <button mat-raised-button color="primary" [disabled]="!isValid" (click)="sendData()">Continuar</button>
+  </div>
+</form>

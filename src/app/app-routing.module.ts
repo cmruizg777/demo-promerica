@@ -1,3 +1,4 @@
+
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsPokemonComponent } from './components/settings-pokemon/settings-pokemon.component';
 import { SettingsInfoComponent } from './components/settings-info/settings-info.component';

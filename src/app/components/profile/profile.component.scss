@@ -1,0 +1,68 @@
+.pokemon-list{
+  max-height: 60vh;
+  overflow-y: scroll;
+  .pokemon-item{
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    /* Neutro / Gris 10 */
+
+    background: #F2F2F2;
+    /* Medium */
+
+    box-shadow: 0px 8px 28px rgba(120, 177, 181, 0.1);
+    border-radius: 15px;
+    .pokemon-info{
+      display: inline-block;
+      width: 40%;
+      box-sizing: border-box;
+      padding: 2%;
+      .pokemon-picture{
+        img{
+          width: 100%;
+        }
+      }
+      .pokemon-name{
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: 'Poppins';
+        font-weight: bolder;
+      }
+      .pokemon-type{
+        text-align: center;
+        font-size: 0.8rem;
+        font-family: 'Poppins';
+        font-weight: 400;
+      }
+    }
+    .pokemon-abilities{
+      width: 60%;
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;
+      padding: 10px;
+      .ability{
+        display: block;
+        margin-bottom: 10px;
+        .ability-name{
+          font-family: 'Poppins';
+          display: inline-block;
+          width: 50%;
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+        .ability-level{
+          display: inline-block;
+          width: 50%;
+          mat-progress-bar{
+            border-radius: 5px;
+            height: 10px;
+          }
+        }
+      }
+    }
+  }
+
+
+}
