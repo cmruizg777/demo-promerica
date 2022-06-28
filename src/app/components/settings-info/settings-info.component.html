@@ -61,8 +61,9 @@
             </button>
           </mat-chip>
           <input
-            placeholder="Pasatiempo Favorito"
+            [placeholder]="profileForm.value.hobby ? '':'Pasatiempo Favorito'"
             #hobbyInput
+            class="chip-input"
             formControlName="hobby"
             [matAutocomplete]="auto"
             [matChipInputFor]="chipList"

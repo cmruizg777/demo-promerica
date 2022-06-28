@@ -17,6 +17,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonItemDirective } from './directives/pokemon-item.directive';
 //export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
@@ -24,7 +26,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     AppComponent,
     SettingsInfoComponent,
     SettingsPokemonComponent,
-    ProfileComponent
+    ProfileComponent,
+    PokemonItemDirective
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NgxMaskModule.forRoot(),
     MatChipsModule,
     MatAutocompleteModule,
+    HttpClientModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

@@ -1,1 +1,65 @@
-<p>settings-pokemon works!</p>
+<div class="brand">
+  <div class="title">
+    <span>
+      <mat-icon aria-hidden="false">keyboard_arrow_left</mat-icon>
+    </span>
+    <span>¡Ya casi términamos!</span>
+  </div>
+</div>
+<div class="form-left">
+  <div class="green-rectangle">
+      <div class="text-container">
+        <p class="text-light" >Imágen Perfil</p>
+      </div>
+      <div class="img-container">
+        <img src="" alt="" [src]="profile.image"  *ngIf="profile && profile.image; else defaultImage">
+
+        <ng-template #defaultImage>
+          <div class="icon">
+            <i class="far fa-user"></i>
+          </div>
+
+        </ng-template>
+      </div>
+      <!--
+      <div class="uploader">
+        <input type="file" class="input-file" (change)="setProfilePicture($event)" accept=".gif,.jpg,.jpeg,.png" #file>
+        <button class="img-button" (click)="file.click()">
+          <div class="text">
+            <span class="text">Adjunta una foto</span>
+          </div>
+          <div class="icon">
+            <i class="fa fa-upload"></i>
+          </div>
+        </button>
+      </div>
+      -->
+  </div>
+</div>
+<div class="form-right">
+  <div class="title">
+    <h1>Tu información</h1>
+  </div>
+  <div class="subtitle">
+    <p>Completa la siguiente información para completar tu perfil</p>
+  </div>
+  <div class="pokemon-container">
+    <div class="pokemon-item" *ngFor="let item of pokemonList">
+      <div class="pokemon-picture" appPokemonItem>
+        <img *ngIf="item.url_image" [src]="item.url_image" alt="">
+      </div>
+      <div class="pokemon-label" appPokemonItem>
+        <span>{{item.name | titlecase}}</span>
+      </div>
+    </div>
+  </div>
+  <form >
+    <div class="form-control">
+
+    </div>
+    <div class="button-container">
+      <button mat-raised-button color="primary" [disabled]="isValid()">Continuar</button>
+    </div>
+  </form>
+
+</div>

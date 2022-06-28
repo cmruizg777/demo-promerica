@@ -1,4 +1,4 @@
-export class IPokemonInfo{
+export class Pokemon{
   id: number;
   name: string;
   url_image: string;
